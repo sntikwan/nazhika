@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu yang Istimewa ✨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Quicksand & Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        quicksand: ['Quicksand', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        pastel: {
+                            pink: '#FFD1DC',
+                            lightpink: '#FFF0F5',
+                            peach: '#FFDAB9',
+                            cream: '#FFFDF7',
+                            rose: '#FF8FA3',
+                            deep: '#6D4C41',
+                            softbrown: '#8D6E63'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'wiggle': 'wiggle 2.5s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-gentle': 'bounceGentle 2s infinite',
+                        'drift': 'drift linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(-5%)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
+                            '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' },
+                        },
+                        drift: {
+                            '0%': { transform: 'translateX(-15vw)' },
+                            '100%': { transform: 'translateX(115vw)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Kustomisasi CSS untuk animasi latar belakang dan amplop */
+        body {
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFFDF7 50%, #FFE5D9 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Nunito', sans-serif;
+            color: #5D4037;
+        }
+
+        /* Animasi Partikel Latar Belakang */
+        .bg-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: riseUp linear infinite;
+            opacity: 0.65;
+        }
+
+        /* Animasi Awan Kecil Melayang Horizontal */
+        .bg-cloud {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: drift linear infinite;
+            opacity: 0.55;
+        }
+
+        @keyframes riseUp {
+            0% {
+                transform: translateY(105vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.7;
+            }
+            80% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* Animasi Hujan Emoji & Confetti Hati saat Tombol Diklik */
+        .burst-emoji {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            font-size: 1.8rem;
+            animation: burstFall cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes burstFall {
+            0% {
+                transform: translate(0, 0) scale(0.5) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.25) rotate(var(--rot));
+                opacity: 0;
+            }
+        }
+
+        /* Efek Animasi Pelukan Hangat (Overlay Hati Besar) */
+        .hug-pulse-overlay {
+            animation: hugPop 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes hugPop {
+            0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
+            40% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.95; }
+            70% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+        }
+
+        /* Transisi Amplop ke Kartu */
+        .card-transition {
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Efek Telinga Beruang Bergerak */
+        .bear-ear-left {
+            transform-origin: 45px 45px;
+            animation: earTwitchLeft 4s infinite;
+        }
+        .bear-ear-right {
+            transform-origin: 115px 45px;
+            animation: earTwitchRight 4s infinite 0.5s;
+        }
+
+        @keyframes earTwitchLeft {
+            0%, 90%, 100% { transform: rotate(0deg); }
+            95% { transform: rotate(-12deg); }
+        }
+        @keyframes earTwitchRight {
+            0%, 90%, 100% { transform: rotate(0deg); }
+            95% { transform: rotate(12deg); }
+        }
+
+        /* Efek Kedip Mata Beruang */
+        .bear-eye {
+            transform-origin: center;
+            animation: blink 4.5s infinite;
+        }
+        @keyframes blink {
+            0%, 96%, 100% { transform: scaleY(1); }
+            98% { transform: scaleY(0.1); }
+        }
+
+        /* Efek Glassmorphism & Pola Kertas Surat Halus */
+        .letter-paper {
+            background: rgba(255, 253, 249, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-image: radial-gradient(#FFD1DC 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Sorotan Lembut pada Kalimat Manis */
+        .sweet-highlight {
+            background: linear-gradient(120deg, rgba(255, 209, 220, 0.45) 0%, rgba(255, 218, 185, 0.45) 100%);
+            padding: 1px 6px;
+            border-radius: 8px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 sm:p-6 relative selection:bg-pastel-pink selection:text-pastel-deep">
+
+    <!-- Container Partikel & Awan Latar Belakang -->
+    <div id="bg-particles" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <!-- Efek Ledakan Pelukan Besar di Tengah Layar (Hidden by default) -->
+    <div id="hug-visual" class="hidden fixed top-1/2 left-1/2 z-50 pointer-events-none select-none text-7xl sm:text-8xl drop-shadow-xl">
+        🤗💖
+    </div>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-md mx-auto relative z-10 my-auto">
+
+        <!-- TAMPILAN 1: AMPLOP TERTUTUP (Klik untuk membuka) -->
+        <div id="envelope-view" class="card-transition flex flex-col items-center justify-center text-center cursor-pointer group" onclick="openCard()">
+            
+            <!-- Badge Petunjuk Atas -->
+            <div class="mb-4 px-4 py-1.5 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-pastel-pink text-xs sm:text-sm font-quicksand font-bold text-pastel-rose animate-bounce-gentle">
+                ✨ Untuk seseorang yang selalu bikin kagum ✨
+            </div>
+
+            <!-- Ilustrasi Amplop Lucu dengan Beruang Mengintip -->
+            <div class="relative w-72 h-64 sm:w-80 sm:h-72 flex items-end justify-center transition-transform duration-300 group-hover:scale-105">
+                
+                <!-- Karakter Beruang Mengintip di Belakang Amplop -->
+                <div class="absolute top-2 z-0 transition-transform duration-500 group-hover:-translate-y-4">
+                    <svg width="140" height="110" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Telinga Kiri -->
+                        <circle class="bear-ear-left" cx="42" cy="42" r="20" fill="#D7A887" stroke="#6D4C41" stroke-width="4"/>
+                        <circle class="bear-ear-left" cx="42" cy="42" r="10" fill="#FFB5C2"/>
+                        <!-- Telinga Kanan -->
+                        <circle class="bear-ear-right" cx="118" cy="42" r="20" fill="#D7A887" stroke="#6D4C41" stroke-width="4"/>
+                        <circle class="bear-ear-right" cx="118" cy="42" r="10" fill="#FFB5C2"/>
+                        <!-- Kepala Beruang -->
+                        <ellipse cx="80" cy="72" rx="48" ry="42" fill="#E6B89C" stroke="#6D4C41" stroke-width="4"/>
+                        <!-- Pipi Merona -->
+                        <ellipse cx="52" cy="76" rx="9" ry="5" fill="#FF9AA2" opacity="0.7"/>
+                        <ellipse cx="108" cy="76" rx="9" ry="5" fill="#FF9AA2" opacity="0.7"/>
+                        <!-- Mata -->
+                        <circle class="bear-eye" cx="62" cy="65" r="4.5" fill="#4E342E"/>
+                        <circle cx="63.5" cy="63.5" r="1.5" fill="white"/>
+                        <circle class="bear-eye" cx="98" cy="65" r="4.5" fill="#4E342E"/>
+                        <circle cx="99.5" cy="63.5" r="1.5" fill="white"/>
+                        <!-- Moncong & Hidung -->
+                        <ellipse cx="80" cy="76" rx="14" ry="10" fill="#FFF8F0"/>
+                        <ellipse cx="80" cy="73" rx="5" ry="3.5" fill="#5D4037"/>
+                        <!-- Mulut Senyum -->
+                        <path d="M74 80 Q80 85 86 80" stroke="#5D4037" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+
+                <!-- Badan Amplop -->
+                <div class="relative z-10 w-full h-44 sm:h-48 bg-gradient-to-b from-[#FFE4E1] to-[#FFD1DC] rounded-3xl shadow-xl border-4 border-white flex flex-col items-center justify-center overflow-hidden">
+                    <!-- Garis Lipatan Amplop -->
+                    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 320 190" preserveAspectRatio="none">
+                        <!-- Lipatan Bawah -->
+                        <path d="M0 190 L160 95 L320 190 Z" fill="#FFC2D1" opacity="0.6"/>
+                        <!-- Lipatan Kiri & Kanan -->
+                        <path d="M0 0 L145 95 L0 190 Z" fill="#FFB3C6" opacity="0.3"/>
+                        <path d="M320 0 L175 95 L320 190 Z" fill="#FFB3C6" opacity="0.3"/>
+                        <!-- Tutup Amplop Atas -->
+                        <path d="M0 0 L160 110 L320 0 Z" fill="#FFE5EC" stroke="#FFB3C6" stroke-width="2"/>
+                    </svg>
+
+                    <!-- Segel Hati yang Berdenyut di Tengah Amplop -->
+                    <div class="relative z-20 mt-4 bg-white p-3.5 rounded-full shadow-md border-2 border-pastel-pink group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-pastel-rose animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Tangan Beruang Memegang Atas Amplop -->
+                <div class="absolute bottom-40 sm:bottom-44 z-20 w-44 flex justify-between px-2 pointer-events-none transition-transform duration-500 group-hover:-translate-y-4">
+                    <div class="w-7 h-5 bg-[#E6B89C] border-2 border-[#6D4C41] rounded-full shadow-sm"></div>
+                    <div class="w-7 h-5 bg-[#E6B89C] border-2 border-[#6D4C41] rounded-full shadow-sm"></div>
+                </div>
+            </div>
+
+            <!-- Teks Ajakan Kecil di Bawah Amplop -->
+            <p class="mt-5 font-quicksand font-bold text-pastel-deep text-sm sm:text-base tracking-wide bg-white/85 backdrop-blur-sm px-5 py-2 rounded-full shadow-sm border border-pastel-pink/80 group-hover:bg-white transition-colors">
+                Ada pesan spesial buatmu, ketuk amplopnya ya! 💌
+            </p>
+        </div>
+
+        <!-- TAMPILAN 2: ISI KARTU SURAT (Muncul setelah amplop diklik) -->
+        <div id="letter-view" class="hidden opacity-0 scale-90 card-transition">
+            <div class="letter-paper rounded-[2rem] shadow-2xl border-4 border-white/90 p-6 sm:p-8 relative overflow-hidden">
+                
+                <!-- Hiasan Stiker Lucu di Sudut-Sudut Kartu -->
+                <div class="absolute top-3 left-3 bg-white/90 p-1.5 rounded-2xl shadow-sm border border-pastel-pink -rotate-12 select-none text-lg animate-wiggle" title="Stiker Lucu">
+                    🌸
+                </div>
+                <div class="absolute top-3 right-3 bg-white/90 p-1.5 rounded-2xl shadow-sm border border-pastel-pink rotate-12 select-none text-lg animate-wiggle" title="Stiker Cinta">
+                    💌
+                </div>
+                <div class="absolute bottom-3 left-3 bg-white/90 px-2 py-0.5 rounded-full shadow-sm border border-pastel-pink -rotate-6 select-none text-xs font-quicksand font-bold text-pastel-rose">
+                    100% Gemes ✨
+                </div>
+                <div class="absolute bottom-3 right-3 bg-white/90 p-1.5 rounded-2xl shadow-sm border border-pastel-pink rotate-12 select-none text-base">
+                    🧸
+                </div>
+
+                <!-- Dekorasi Cahaya Sudut -->
+                <div class="absolute -top-6 -right-6 w-24 h-24 bg-pastel-pink/40 rounded-full blur-xl pointer-events-none"></div>
+                <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-pastel-peach/40 rounded-full blur-xl pointer-events-none"></div>
+
+                <!-- Header Ilustrasi Karakter Beruang Memegang Hati -->
+                <div class="flex flex-col items-center justify-center mb-4 mt-1">
+                    <div class="relative animate-float">
+                        <svg width="125" height="110" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Sparkles di sekitar beruang -->
+                            <path d="M20 30 L23 37 L30 40 L23 43 L20 50 L17 43 L10 40 L17 37 Z" fill="#FFD166"/>
+                            <path d="M140 25 L142 30 L147 32 L142 34 L140 39 L138 34 L133 32 L138 30 Z" fill="#FF8FA3"/>
+                            <circle cx="28" cy="75" r="3" fill="#FFB5C2"/>
+                            <circle cx="135" cy="70" r="3.5" fill="#FFD166"/>
+
+                            <!-- Telinga -->
+                            <circle class="bear-ear-left" cx="45" cy="40" r="18" fill="#D7A887" stroke="#6D4C41" stroke-width="3.5"/>
+                            <circle class="bear-ear-left" cx="45" cy="40" r="9" fill="#FFB5C2"/>
+                            <circle class="bear-ear-right" cx="115" cy="40" r="18" fill="#D7A887" stroke="#6D4C41" stroke-width="3.5"/>
+                            <circle class="bear-ear-right" cx="115" cy="40" r="9" fill="#FFB5C2"/>
+
+                            <!-- Badan -->
+                            <path d="M45 125 C45 95, 115 95, 115 125 Z" fill="#E6B89C" stroke="#6D4C41" stroke-width="3.5"/>
+
+                            <!-- Kepala -->
+                            <ellipse cx="80" cy="68" rx="44" ry="38" fill="#E6B89C" stroke="#6D4C41" stroke-width="3.5"/>
+
+                            <!-- Pipi Merona -->
+                            <ellipse cx="53" cy="72" rx="8" ry="4.5" fill="#FF8FA3" opacity="0.75"/>
+                            <ellipse cx="107" cy="72" rx="8" ry="4.5" fill="#FF8FA3" opacity="0.75"/>
+
+                            <!-- Mata Bahagia (Melengkung imut) -->
+                            <path d="M56 62 Q62 56 68 62" stroke="#4E342E" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            <path d="M92 62 Q98 56 104 62" stroke="#4E342E" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+                            <!-- Moncong & Hidung -->
+                            <ellipse cx="80" cy="73" rx="13" ry="9.5" fill="#FFF8F0"/>
+                            <ellipse cx="80" cy="70" rx="4.5" ry="3" fill="#5D4037"/>
+                            <path d="M75 76 Q80 81 85 76" stroke="#5D4037" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+
+                            <!-- Hati Besar yang Dipeluk -->
+                            <path d="M80 128 C80 128 52 110 52 93 C52 84 60 79 68 83 C74 86 80 92 80 92 C80 92 86 86 92 83 C100 79 108 84 108 93 C108 110 80 128 80 128 Z" fill="#FF758F" stroke="#6D4C41" stroke-width="3"/>
+                            <!-- Kilauan pada hati -->
+                            <path d="M60 90 Q62 86 66 86" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+                            <!-- Tangan Memeluk Hati -->
+                            <ellipse cx="55" cy="105" rx="9" ry="7" transform="rotate(-20 55 105)" fill="#E6B89C" stroke="#6D4C41" stroke-width="3"/>
+                            <ellipse cx="105" cy="105" rx="9" ry="7" transform="rotate(20 105 105)" fill="#E6B89C" stroke="#6D4C41" stroke-width="3"/>
+                        </svg>
+                    </div>
+
+                    <!-- Judul Kartu -->
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-pastel-lightpink border border-pastel-pink text-pastel-rose font-quicksand font-bold text-xs tracking-wider uppercase mb-1">
+                        Catatan Kecil Untukmu 🌸
+                    </span>
+                </div>
+
+                <!-- Kotak Teks Utama dengan Sorotan Lembut -->
+                <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 sm:p-6 shadow-inner border border-pastel-pink/60 relative">
+                    <!-- Tanda Kutip Dekoratif -->
+                    <span class="absolute -top-3 left-4 text-3xl text-pastel-pink font-serif select-none">“</span>
+                    
+                    <p id="main-message" class="font-quicksand font-semibold text-base sm:text-[17px] leading-relaxed text-[#5D4037] text-center">
+                        Kalau boleh jujur, <span class="sweet-highlight font-bold text-[#4E342E]">aku nggak pernah bosan mengagumimu.</span> Bahkan ketika kamu merasa sedang biasa-biasa saja, <span class="sweet-highlight font-bold text-[#4E342E]">di mataku kamu tetap punya sesuatu yang istimewa.</span> Jadi, jangan heran kalau aku sering memujimu, karena rasanya <span class="sweet-highlight font-bold text-[#4E342E]">selalu ada saja hal baru yang membuatku jatuh hati kepadamu.</span>
+                    </p>
+
+                    <span class="absolute -bottom-5 right-4 text-3xl text-pastel-pink font-serif select-none">”</span>
+                </div>
+
+                <!-- Gelembung Pesan Balasan Interaktif (Muncul saat tombol diklik) -->
+                <div id="reply-box" class="hidden mt-4 transform transition-all duration-300">
+                    <div class="bg-gradient-to-r from-pastel-lightpink to-[#FFF3E0] border-2 border-pastel-pink rounded-2xl p-3.5 text-center shadow-sm relative">
+                        <p id="reply-text" class="font-nunito font-bold text-sm text-pastel-rose"></p>
+                    </div>
